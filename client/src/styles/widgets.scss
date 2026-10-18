@@ -1,0 +1,164 @@
+#toolbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    box-shadow: var(--shadow-toolbar);
+    z-index: 50;
+}
+
+#canvasBox {
+  position: absolute;
+  inset: 60px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas {
+  width: 512px;
+  height: 512px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-canvas);
+}
+
+#panelPresetsBox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+}
+
+#switchButton {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    min-width: 64px;
+    min-height: 64px;
+    cursor: pointer;
+    scale: 0.9;
+    transition: all 0.2s ease, border-color 0.15s ease;
+}
+
+#switchButtonActive {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    min-width: 64px;
+    min-height: 64px;
+    cursor: pointer;
+    scale: 0.9;
+    transition: all 0.2s ease, border-color 0.15s ease;
+}
+
+#switchButtonActive:hover, .switchButton:hover {
+    background: var(--bg-hover);
+}
+
+#panelPresets {
+    position: absolute;
+    width: 250px;
+    height: 100vh;
+    background: var(--bg-panel);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    overflow-y: auto;
+    transition: right 0.2s ease;
+}
+
+#switchButton {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-main);
+    transition: right 0.2s ease, background 0.15s ease;
+    z-index: 101;
+}
+
+#switchButton:hover {
+    background: var(--bg-hover);
+}
+
+#panelPresets {
+    position: absolute;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--bg-panel);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    overflow-y: auto;
+    transition: right 0.2s ease;
+    h2 {
+      font-size: 24px;
+      width: 100%;
+      padding-top: 20px;
+      text-align: center;
+    }
+}
+
+.presetBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.presetBox:hover {
+    background: var(--bg-hover);
+}
+
+.presetPreview {
+    width: 128px;
+    height: 128px;
+    border: 1px solid var(--border-color);
+    image-rendering: pixelated;
+    border-radius: var(--radius-sm);
+}
+
+.presetTitle {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text-main);
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

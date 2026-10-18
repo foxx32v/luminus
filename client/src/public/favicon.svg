@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Легкое свечение для активных пикселей -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Темный фон (как выключенная матрица) -->
+  <rect width="100" height="100" fill="#1e1e2e" />
+  
+  <!-- Рукописная, слегка неровная рамка -->
+  <path d="M 14,16 Q 50,12 84,16 Q 88,50 84,84 Q 50,88 16,84 Q 12,50 16,16 Z" 
+        fill="none" stroke="#cdd6f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Сетка 5x5 (символизирует твою матрицу 16x16) -->
+  <!-- Неактивные пиксели -->
+  <g fill="#313244">
+    <!-- Ряд 1 -->
+    <rect x="18" y="18" width="10" height="10" />
+    <rect x="32" y="18" width="10" height="10" />
+    <rect x="46" y="18" width="10" height="10" />
+    <rect x="60" y="18" width="10" height="10" />
+    <rect x="74" y="18" width="10" height="10" />
+    <!-- Ряд 2 -->
+    <rect x="18" y="32" width="10" height="10" />
+    <rect x="32" y="32" width="10" height="10" />
+    <rect x="46" y="32" width="10" height="10" />
+    <rect x="60" y="32" width="10" height="10" />
+    <rect x="74" y="32" width="10" height="10" />
+    <!-- Ряд 3 -->
+    <rect x="18" y="46" width="10" height="10" />
+    <rect x="32" y="46" width="10" height="10" />
+    <rect x="46" y="46" width="10" height="10" />
+    <rect x="60" y="46" width="10" height="10" />
+    <rect x="74" y="46" width="10" height="10" />
+    <!-- Ряд 4 -->
+    <rect x="18" y="60" width="10" height="10" />
+    <rect x="32" y="60" width="10" height="10" />
+    <rect x="46" y="60" width="10" height="10" />
+    <rect x="60" y="60" width="10" height="10" />
+    <rect x="74" y="60" width="10" height="10" />
+    <!-- Ряд 5 -->
+    <rect x="18" y="74" width="10" height="10" />
+    <rect x="32" y="74" width="10" height="10" />
+    <rect x="46" y="74" width="10" height="10" />
+    <rect x="60" y="74" width="10" height="10" />
+    <rect x="74" y="74" width="10" height="10" />
+  </g>
+  
+  <!-- Активные пиксели (образуют искру/свет по диагонали) -->
+  <g filter="url(#glow)">
+    <rect x="46" y="32" width="10" height="10" fill="#f9e2af" /> <!-- Теплый желтый -->
+    <rect x="60" y="46" width="10" height="10" fill="#89b4fa" /> <!-- Мягкий синий -->
+    <rect x="46" y="60" width="10" height="10" fill="#f38ba8" /> <!-- Акцентный розовый -->
+  </g>
+  
+  <!-- Маленькие рукописные штрихи по углам для усиления эффекта "рисовал человек" -->
+  <path d="M 80,22 L 84,18" stroke="#cdd6f4" stroke-width="2" stroke-linecap="round" />
+  <path d="M 20,82 L 16,86" stroke="#cdd6f4" stroke-width="2" stroke-linecap="round" />
+</svg>

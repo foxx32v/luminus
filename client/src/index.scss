@@ -1,0 +1,12 @@
+@use './styles/index.scss';
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: sans-serif;
+}

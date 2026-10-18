@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
+import { TRPCModule } from 'nestjs-trpc';
+import { PrismaModule } from './prisma/prisma.module';
+import { PictureRouter } from './pictures';
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    PrismaModule,
+    TRPCModule.forRoot({basePath: '/trpc'}),
+  ],
+  controllers: [],
+  providers: [PictureRouter],
 })
 export class AppModule {}

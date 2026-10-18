@@ -34,4 +34,4 @@ Thumbs.db
 *.swp
 
 # docker
-docker-data/
+docker-data/settings
