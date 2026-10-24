@@ -1,10 +1,11 @@
 import { useMode, type ButtonModeProps } from "../shared"
 
-export const ButtonMode = ({title,mode,icon}: ButtonModeProps) => {
+export const ButtonMode = ({title,mode,icon,additionalClick}: ButtonModeProps) => {
     const {currentMode,setMode} = useMode()
     const isActive = currentMode === mode
     const handleClick = () => {
         setMode(isActive ? null : mode)
+        additionalClick?.()
     }
     return (
         <button

@@ -1,23 +1,35 @@
-import { BookLock, BookOpen } from 'lucide-react';
-import { useState } from 'react';
-import { Preset } from '../A.features';
+import { BookLock, BookOpen, Check, Plus } from 'lucide-react';
+import { Preset, Loader, ButtonSvg } from '../A.features';
+import { usePanelPresets } from '../shared';
 
 export const PanelPresets = () => {
-    const [isOpen, setOpen] = useState(false);
+    const { isOpenSideBar, setOpenSideBar, isOpenMenuAdding, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave } = usePanelPresets()
 
     return (
         <div id="panelPresetsBox">
-            <button
-            onClick={() => setOpen(!isOpen)}
-            id="switchButton"
-            style={{ right: isOpen ? '250px' : '0' }}
+            <div
+                id="menuAddingPreset"
+                className={isOpenMenuAdding ? 'open' : ''}
+                style={{ left: posMenu.x - 200, top: posMenu.y + 20 }}
+                onMouseLeave={menuLeave}
             >
-            {isOpen ? <BookOpen size={20} /> : <BookLock size={20} />}
-        </button>
-        <aside id="panelPresets"
-            style={{ right: isOpen ? '0' : '-300px' }}>
-                <h2>Пресеты</h2>
-        </aside>
+                <input ref={titleRef} placeholder="Введите название" />
+                <ButtonSvg title="готово" icon={<Check size={20} />} additionalClick={savePreset} />
+            </div>
+            <ButtonSvg
+                icon={isOpenSideBar ? <BookOpen size={20} /> : <BookLock size={20} />}
+                title={isOpenSideBar ? 'закрыть' : 'открыть'}
+                additionalClick={() => setOpenSideBar(!isOpenSideBar)}
+                customClassName={`switchButton${isOpenSideBar ? 'Active' : ''}`}
+            />
+            <aside id="panelPresets" className={isOpenSideBar ? 'barOpen' : ''}>
+                <div className="header">
+                    <ButtonSvg title="добавить" icon={<Plus size={20} />} additionalClick={openAddingMenu} />
+                </div>
+                {isLoading ? <Loader size={30} isLoad />
+                : data?.map((p) => <Preset key={p.id} id={p.id} title={p.title ?? ''} content={p.content} />
+                )}
+            </aside>
         </div>
     );
 };

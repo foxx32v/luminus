@@ -4,6 +4,7 @@ export type modesType =
     | 'clear'
     | 'filling'
     | 'eyedropper'
-    | 'line'
-    | 'rect'
+    | 'eraser'
     | null
+
+export type MatrixType = number[]

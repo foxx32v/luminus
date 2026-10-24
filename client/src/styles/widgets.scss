@@ -14,18 +14,20 @@
 }
 
 #canvasBox {
-  position: absolute;
-  inset: 60px 0 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: absolute;
+    inset: 60px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #canvas {
-  width: 512px;
-  height: 512px;
-  background: var(--bg-card);
-  box-shadow: var(--shadow-canvas);
+    width: 512px;
+    height: 512px;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-canvas);
+    padding: 10px;
+    position: fixed;
 }
 
 #panelPresetsBox {
@@ -37,59 +39,7 @@
     display: flex;
 }
 
-#switchButton {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 8px;
-    min-width: 64px;
-    min-height: 64px;
-    cursor: pointer;
-    scale: 0.9;
-    transition: all 0.2s ease, border-color 0.15s ease;
-}
-
-#switchButtonActive {
-    position: absolute;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 8px;
-    min-width: 64px;
-    min-height: 64px;
-    cursor: pointer;
-    scale: 0.9;
-    transition: all 0.2s ease, border-color 0.15s ease;
-}
-
-#switchButtonActive:hover, .switchButton:hover {
-    background: var(--bg-hover);
-}
-
-#panelPresets {
-    position: absolute;
-    width: 250px;
-    height: 100vh;
-    background: var(--bg-panel);
-    border-left: 1px solid var(--border-color);
-    box-shadow: var(--shadow-panel);
-    overflow-y: auto;
-    transition: right 0.2s ease;
-}
-
-#switchButton {
+.switchButton {
     position: absolute;
     right: 0;
     width: 40px;
@@ -106,7 +56,24 @@
     z-index: 101;
 }
 
-#switchButton:hover {
+.switchButtonActive {
+    position: absolute;
+    right: 250px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-main);
+    transition: right 0.2s ease, background 0.15s ease;
+    z-index: 101;
+}
+
+.switchButton:hover {
     background: var(--bg-hover);
 }
 
@@ -121,11 +88,14 @@
     box-shadow: var(--shadow-panel);
     overflow-y: auto;
     transition: right 0.2s ease;
+    &.barOpen {
+        right: 0px;
+    }
     h2 {
-      font-size: 24px;
-      width: 100%;
-      padding-top: 20px;
-      text-align: center;
+        font-size: 14px;
+        width: 100%;
+        padding-top: 20px;
+        text-align: center;
     }
 }
 
@@ -161,4 +131,52 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+#toolbarLeft {
+    margin-right: 320px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    align-items: right;
+}
+
+#menuAddingPreset {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    width: 200px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-panel);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 100;
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    } input {
+        width: 100%;
+        height: 40px;
+        padding: 8px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        color: var(--text-main);
+        font-size: 14px;
+        &:focus {
+            outline: none;
+            border-color: var(--accent);
+        }} button {
+        width: 20px;
+        height: 20px;
+    }
 }

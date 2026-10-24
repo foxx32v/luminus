@@ -1,35 +1,31 @@
-import { useEffect, useRef } from 'react'
-import type { PresetProps } from '../shared'
+import { usePreset, type PresetProps } from '../shared';
+import { ButtonSvg } from './buttonSvg';
+import { Loader, Trash2 } from 'lucide-react';
 
-const GRID = 16;
 const PREVIEW = 64;
 
-export const Preset = ({ id, title, content, onLoad }: PresetProps) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-        const cell = PREVIEW / GRID;
-        content.forEach((color, i) => {
-            const col = i % GRID;
-            const row = Math.floor(i / GRID);
-            ctx.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
-            ctx.fillRect(col * cell, row * cell, cell, cell);
-        })
-    }, [content]);
+export const Preset = (props: PresetProps) => {
+    const { canvasRef, removePreset, loadPreset, isOpenMenu, posMenu, handleClick, handleLeave } = usePreset(props);
 
     return (
-        <div className="presetBox" onClick={() => onLoad?.(id)}>
+        <div className="presetBox"
+        onClick={handleClick}
+        >
+            <div
+                className={`presetOptionBox${isOpenMenu ? 'Open' : ''}`}
+                onMouseLeave={handleLeave}
+                style={{ left: posMenu.x-35, top: posMenu.y-20 }}
+                >
+                <ButtonSvg icon={<Loader size={20}/>} title='загрузить' additionalClick={loadPreset}/>
+                <ButtonSvg icon={<Trash2 size={20} />} title="удалить" additionalClick={removePreset} />
+            </div>
             <canvas
                 ref={canvasRef}
                 width={PREVIEW}
                 height={PREVIEW}
                 className="presetPreview"
             />
-            <p className="presetTitle">{title ?? 'Без названия'}</p>
+            <p className="presetTitle">{props.title ?? 'Без названия'}</p>
         </div>
     );
 };
