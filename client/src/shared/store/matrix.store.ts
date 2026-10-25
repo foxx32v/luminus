@@ -1,15 +1,15 @@
 import { create } from "zustand";
-import { MATRIX_CONFIG, type MatrixStore } from "../";
-const GRID = MATRIX_CONFIG.GRID
+import { CONSTANTS_CONFIG, type MatrixStore } from "../";
+const SIZE = CONSTANTS_CONFIG.SIZE
 
 const LocalStorageSave = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value))
 }
 const LocalStorageGet = (key: string) => {
     const row = localStorage.getItem(key)
-    if (row == null) return Array(GRID*GRID).fill(0x000000)
+    if (row == null) return Array(SIZE).fill(0xffffff)
     try { return JSON.parse(row) as Number[]
-    } catch {return Array(GRID*GRID).fill(0x000000)}
+    } catch {return Array(SIZE).fill(0x000000)}
 }
 
 export const useMatrix = create<MatrixStore>((set) => ({

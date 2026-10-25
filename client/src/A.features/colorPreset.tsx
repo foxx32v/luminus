@@ -6,7 +6,6 @@ export const ColorPreset = ({color}:ColorProps) => {
     const { currentColor, setColor } = useColor()
     const handleClick = () => {
         setColor(color)
-        setOpen(false)
         setMode('draw')
     }
     return (
@@ -14,7 +13,7 @@ export const ColorPreset = ({color}:ColorProps) => {
         onClick={handleClick}
         id={currentColor == color && 'chosenColor' || ''}
         className="colorPreset"
-        style={{ background: `#${color.toString(16).padStart(6, 'ffffff')}`}}
+        style={{ background: `#${color.toString(16).padStart(6, '0')}`}}
         />
     )
 }

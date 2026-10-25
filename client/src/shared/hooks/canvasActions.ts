@@ -1,11 +1,11 @@
-import { MATRIX_CONFIG, useColor, useMatrix } from '../';
+import { CONSTANTS_CONFIG, useColor, useMatrix } from '../';
 
-const GRID = MATRIX_CONFIG.GRID
+const GRID = CONSTANTS_CONFIG.GRID
 
 export function useCanvasActions() {
     const { currentColor } = useColor()
     const { setMatrix } = useMatrix()
-    const clear = () => setMatrix(Array(GRID*GRID).fill(0))
+    const clear = () => setMatrix(Array(GRID*GRID).fill(0xffffff))
     const fill = () => setMatrix(Array(GRID*GRID).fill(currentColor))
     return { clear, fill }
 }

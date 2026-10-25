@@ -10,11 +10,10 @@
 
 ## Структура
 
-luminus/
-├── client/          # React + Vite
-├── server/          # NestJS
-├── docker-compose.yml
-└── README.md
+- client/ — React + Vite
+- server/ — NestJS
+- docker-compose.yml
+- firmware/
 
 ## Требования
 
@@ -27,8 +26,8 @@ luminus/
 ### 1. Инфраструктура
 
 docker compose up -d
-
-Поднимает PostgreSQL (5432) и Redis (6379).
+- PostgreSQL (5432)
+- Redis (6379).
 
 ### 2. Server
 
@@ -37,8 +36,8 @@ npm install
 npx prisma migrate dev
 npm run start:dev
 
-API: http://localhost:3000
-Swagger: http://localhost:3000/api
+- API: http://localhost:3000
+- Swagger: http://localhost:3000/api
 
 ### 3. Client
 
@@ -46,15 +45,15 @@ cd client
 npm install
 npm run dev
 
-UI: http://localhost:5173
+- UI: http://localhost:5173
 
 ## Архитектура
 
-- **tRPC** — типизированный канал фронт ↔ сервер
-- **Socket.IO** — real-time синхронизация матрицы
-- **BullMQ** — очередь кадров анимации для ESP32
-- **Prisma + PostgreSQL** — пресеты
-- **Redis** — состояние доски + Pub/Sub
+- tRPC — типизированный канал фронт <=> сервер
+- Socket.IO — real-time синхронизация матрицы
+- BullMQ — очередь кадров анимации для ESP32
+- Prisma + PostgreSQL — пресеты
+- Redis — состояние доски + Pub/Sub
 
 ## Тесты
 

@@ -5,7 +5,7 @@ import { Loader, Trash2 } from 'lucide-react';
 const PREVIEW = 64;
 
 export const Preset = (props: PresetProps) => {
-    const { canvasRef, removePreset, loadPreset, isOpenMenu, posMenu, handleClick, handleLeave } = usePreset(props);
+    const { canvasRef, removePreset, loadPreset, isOpenMenu, posMenu,   handleClick, handleLeave } = usePreset(props);
 
     return (
         <div className="presetBox"

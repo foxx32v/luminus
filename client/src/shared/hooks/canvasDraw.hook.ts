@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useColor, useMatrix } from '../';
-import { MATRIX_CONFIG } from '../configs/matrix.config';
+import { CONSTANTS_CONFIG } from '../configs/constants.config';
 
-const GRID = MATRIX_CONFIG.GRID;
+const GRID = CONSTANTS_CONFIG.GRID;
 
 export function useCanvasDraw(size: number) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,7 +20,7 @@ export function useCanvasDraw(size: number) {
         matrix.forEach((c, i) => {
             const col = i % GRID;
             const row = Math.floor(i / GRID);
-            ctx.fillStyle = `#${c.toString(16).padStart(6, 'f')}`;
+            ctx.fillStyle = `#${c.toString(16).padStart(6, '0')}`;
             ctx.fillRect(col * cell, row * cell, cell, cell);
         });
     }, [matrix, size]);
@@ -52,6 +52,25 @@ export function useCanvasDraw(size: number) {
         setColor(matrix[pos.i])
     }
 
+    const toShaderAt = (e: React.MouseEvent, step: number) => {
+        const pos = start(e);
+        if (!pos) return;
+        const oldColor = matrix[pos.i]
+        let r = ((oldColor >> 16) & 0xff) + step
+        let g = ((oldColor >> 8) & 0xff) + step
+        let b = (oldColor & 0xff) + step
+        if (r > 255) r = 255;
+        if (r < 0) r = 0;
+        if (g > 255) g = 255;
+        if (g < 0) g = 0;
+        if (b > 255) b = 255;
+        if (b < 0) b = 0;
+        const newColor = (r << 16) | (g << 8) | b
+        const next = [...matrix]
+        next[pos.i] = newColor
+        setMatrix(next)
+    }
+
     const handlePaintStart = (e: React.MouseEvent, color: number) => {
         isDrawing.current = true;
         paintAt(e, color);
@@ -65,5 +84,5 @@ export function useCanvasDraw(size: number) {
         isDrawing.current = false;
     };
 
-    return { canvasRef, currentColor, eyedropperAt, handlePaintStart, handlePaintMove, handlePaintEnd };
+    return { canvasRef, currentColor, toShaderAt, eyedropperAt, handlePaintStart, handlePaintMove, handlePaintEnd };
 }

@@ -180,3 +180,37 @@
         height: 20px;
     }
 }
+
+#recentColorsBox {
+}
+
+.recentColorsMenu {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-panel);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 400;
+}
+
+.recentColorsMenuOpen {
+    position: fixed;
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-panel);
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 400;
+    opacity: 1;
+}

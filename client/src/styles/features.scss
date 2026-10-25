@@ -91,7 +91,9 @@
 }
 
 #chosenColor {
-    border: 3px solid var(--accent);
+    border: 1px solid var(--accent);
+    scale: 1.1;
+    transition: all 0.2s;
 }
 
 .loaderBoxActive, .loaderBox {
@@ -128,24 +130,23 @@
 }
 
 .presetOptionBox {
-    top: 0;
-    left: 0;
     position: fixed;
-    padding: 10px;
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     opacity: 0;
-    z-index: -100;
-    transition: all 0.2s ease
+    z-index: -200;
+    padding: 10px;
+    transition: all 0.2s ease;
 }
 
 .presetOptionBoxOpen {
-    padding: 10px;
     position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    z-index: 400;
     background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    opacity: 1;
+    z-index: 200;
+    padding: 10px;
+    transition: all 20;
 }

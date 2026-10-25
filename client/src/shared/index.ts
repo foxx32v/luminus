@@ -12,13 +12,14 @@ export * from './hooks/canvasActions';
 export * from './hooks/canvasPresents.hook';
 export * from './hooks/preset.hook';
 export * from './hooks/panelPresets.hook';
+export * from './hooks/buttonColor.hook';
 
 // api //
 export * from './api/tRPC';
 export * from './api/apiRequests';
 
 // config //
-export * from './configs/matrix.config';
+export * from './configs/constants.config';
 
 // store //
 export * from './store/mode.store';

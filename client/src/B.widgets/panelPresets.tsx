@@ -12,7 +12,7 @@ export const PanelPresets = () => {
                 className={isOpenMenuAdding ? 'open' : ''}
                 style={{ left: posMenu.x - 200, top: posMenu.y + 20 }}
                 onMouseLeave={menuLeave}
-            >
+                >
                 <input ref={titleRef} placeholder="Введите название" />
                 <ButtonSvg title="готово" icon={<Check size={20} />} additionalClick={savePreset} />
             </div>

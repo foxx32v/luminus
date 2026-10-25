@@ -6,7 +6,7 @@ export function usePreset({ id, content }: PresetProps) {
     const { remove } = useCanvasPresets();
     const { setMatrix } = useMatrix();
     const [isOpenMenu, setOpenMenu] = useState(false);
-    const [posMenu, setPosMenu] = useState<{ x: number; y: number }>({ x: 300, y: 300 });
+    const [posMenu, setPosMenu] = useState<{ x: number; y: number }>({ x: -100, y: 300 });
 
     const removePreset = async (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -24,7 +24,7 @@ export function usePreset({ id, content }: PresetProps) {
         setPosMenu({ x: e.clientX, y: e.clientY });
     };
 
-    const handleLeave = () => {
+    const handleLeave = (e: React.MouseEvent) => {
         setOpenMenu(false);
     };
 
@@ -37,7 +37,7 @@ export function usePreset({ id, content }: PresetProps) {
         content.forEach((color, i) => {
             const col = i % 16;
             const row = Math.floor(i / 16);
-            ctx.fillStyle = `#${color.toString(16).padStart(6, 'ffffff')}`;
+            ctx.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
             ctx.fillRect(col * cell, row * cell, cell, cell);
         });
     }, [content]);

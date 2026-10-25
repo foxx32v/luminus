@@ -5,6 +5,8 @@ export type modesType =
     | 'filling'
     | 'eyedropper'
     | 'eraser'
+    | 'toDarken'
+    | 'toLighten'
     | null
 
 export type MatrixType = number[]

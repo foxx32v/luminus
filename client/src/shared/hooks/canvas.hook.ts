@@ -25,6 +25,8 @@ export function useCanvas() {
             case 'drag': pan.handlePanStart(e); break;
             case 'draw': draw.handlePaintStart(e, draw.currentColor); break;
             case 'eraser': draw.handlePaintStart(e, 0xffffff); break;
+            case 'toLighten': draw.toShaderAt(e, 20);break;
+            case 'toDarken': draw.toShaderAt(e, -20);break;
             case 'eyedropper': draw.eyedropperAt(e); break;
         }
     };
