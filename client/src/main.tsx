@@ -1,18 +1,20 @@
-import { StrictMode, useState } from 'react';
+import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { httpBatchLink } from '@trpc/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { tRPC } from './shared/api/tRPC';
 import { Page } from './C.pages';
 import './index.scss';
+import { CONSTANTS_CONFIG, useSocket } from './shared';
 
 const Root = () => {
+    const { connect, disconnect } = useSocket()
     const [queryClient] = useState(() => new QueryClient());
-    const [trpcClient] = useState(() =>
-        tRPC.createClient({
-            links: [httpBatchLink({ url: 'http://localhost:3000/trpc' })],
-        })
-    );
+    const [trpcClient] = useState(() => tRPC.createClient({links: [httpBatchLink({ url: CONSTANTS_CONFIG.SERVER_URL_TRPC })],}));
+    useEffect(() => {
+        connect()
+        return () => disconnect();
+    },[])
 
     return (
         <tRPC.Provider client={trpcClient} queryClient={queryClient}>

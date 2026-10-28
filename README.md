@@ -1,61 +1,57 @@
-# Luminus
+<img src='assets/logo.png' align='center' alt="Luminus"/>
+<h2>Веб-приложение для рисования на матрице 16×16 через ESP32.</h2>
 
-Веб-приложение для рисования на матрице 16×16 через ESP32.
+- Главная страница
+<img src='assets/mainPage.png' align='center' alt="Luminus"/>
 
 ## Стек
 
-**Client:** React, TypeScript, Vite, Zustand, Socket.IO Client, tRPC Client
-**Server:** NestJS, TypeScript, tRPC, BullMQ, Prisma, PostgreSQL, Redis, Socket.IO
-**Infra:** Docker Compose (PostgreSQL, Redis)
+| Client | Server | Infra | Test |
+|--------|--------|-------|------|
+| React<br>TypeScript<br>Vite<br>Zustand<br>Socket.IO Client<br>tRPC Client | NestJS<br>TypeScript<br>tRPC<br>BullMQ<br>Prisma<br>PostgreSQL<br>Redis<br>Socket.IO | Docker Compose<br>PostgreSQL<br>Redis | Unit<br>Integration |
 
 ## Структура
-
+```
 - client/ — React + Vite
 - server/ — NestJS
 - docker-compose.yml
 - firmware/
+```
 
 ## Требования
-
+```
 - Node.js 20+
 - Docker Desktop
 - npm
+```
 
 ## Запуск
 
-### 1. Инфраструктура
+- Из корня проекта:
 
-docker compose up -d
-- PostgreSQL (5432)
-- Redis (6379).
-
-### 2. Server
-
-cd server
-npm install
-npx prisma migrate dev
-npm run start:dev
-
-- API: http://localhost:3000
-- Swagger: http://localhost:3000/api
-
-### 3. Client
-
-cd client
-npm install
-npm run dev
-
-- UI: http://localhost:5173
+```bash
+npm run start
+```
 
 ## Архитектура
 
-- tRPC — типизированный канал фронт <=> сервер
-- Socket.IO — real-time синхронизация матрицы
-- BullMQ — очередь кадров анимации для ESP32
-- Prisma + PostgreSQL — пресеты
-- Redis — состояние доски + Pub/Sub
+```mermaid
+flowchart TD
+    Client[React Client] <-->|WebSocket| Server[NestJS Server]
+    Client -->|tRPC / REST| Server
+    Server -->|Prisma| DB[(PostgreSQL)]
+    Server <-->|Pub/Sub| Redis[(Redis)]
+    Server -->|Queue| BullMQ[BullMQ]
+    Server <-->|WebSocket| ESP32[ESP32]
+    ESP32 --> Matrix[LED Matrix 16x16]
+```
 
-## Тесты
+## Что дальше
 
-- Unit: логика матрицы
-- Integration: tRPC-процедуры пресетов
+```
+- Прошивка ESP32: подключение к WebSocket, отрисовка через FastLED
+- BullMQ: очередь кадров для плавной смены пресетов
+- Redis: хранение текущего состояния доски
+- Покрытие тестами: unit, integration
+- Добавить картинки в README файл
+```

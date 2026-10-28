@@ -1,4 +1,4 @@
-import { Canvas, Toolbar, PanelPresets } from "../B.widgets"
+import { Canvas, Toolbar, PanelPresets, MainLoader } from "../B.widgets"
 
 export const Page = () => {
     return (
@@ -6,6 +6,7 @@ export const Page = () => {
             <Toolbar/>
             <Canvas/>
             <PanelPresets/>
+            <MainLoader/>
         </div>
     )
 }

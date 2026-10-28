@@ -1,0 +1,16 @@
+{
+  "name": "luminus",
+  "private": true,
+  "scripts": {
+    "infra": "docker compose -f server/docker-compose.yaml up -d",
+    "infra:down": "docker compose -f server/docker-compose.yaml down",
+    "seed": "cd server && npx prisma db seed",
+    "dev:server": "cd server && npm run start:dev",
+    "dev:client": "cd client && npm run dev",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
+    "start": "npm run infra && npm run seed && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

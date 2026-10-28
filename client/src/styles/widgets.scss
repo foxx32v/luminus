@@ -198,6 +198,7 @@
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     z-index: 400;
+    visibility: hidden;
 }
 
 .recentColorsMenuOpen {
@@ -212,5 +213,57 @@
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     z-index: 400;
+    visibility: visible;
     opacity: 1;
+}
+
+.mainLoaderOpen {
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-main);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0.95;
+    visibility: visible;
+    transition: opacity 0.4s ease;
+}
+
+.mainLoaderClose {
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-main);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+#mainLoaderBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    h2 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--text-main);
+    }
+}
+
+.mainLoaderCloseButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    &:hover {
+        background: var(--bg-hover);
+    }
 }

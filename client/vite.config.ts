@@ -4,9 +4,8 @@ import path from 'node:path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/luminus/',
   resolve: {
-    alias: {
-      '@server': path.resolve(__dirname, '../server/src'),
-    },
+    alias: { '@server': path.resolve(__dirname, '../server/src'), },
   },
 })

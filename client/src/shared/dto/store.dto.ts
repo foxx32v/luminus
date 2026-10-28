@@ -1,3 +1,4 @@
+import type { SocketHookStatusType } from "./socket.dto";
 import type { modesType, MatrixType } from "./type.dto";
 export interface ModeState {
     currentMode: modesType;
@@ -27,4 +28,13 @@ export interface LoaderProps {
 export interface LoaderElementProps {
     go: boolean;
     size: number;
+}
+
+export interface SocketStore {
+    status: SocketHookStatusType;
+    setStatus: (status: SocketHookStatusType) => void;
+    error: unknown | null;
+    setError: (error: unknown | null) => void;
+    isConnection: boolean;
+    setIsConnection: (connect: boolean) => void;
 }

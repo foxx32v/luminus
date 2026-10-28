@@ -1,14 +1,15 @@
-import type { PictureCreateApi, PictureRemoveApi } from '../'
-
+import { CONSTANTS_CONFIG, type PictureCreateApi, type PictureRemoveApi } from '../'
+const URL = CONSTANTS_CONFIG.SERVER_URL_PICTURES
 class PicturesRestApi {
     async create(dto: PictureCreateApi) {
-        await fetch('http://localhost:3000/pictures', {
+        await fetch(URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dto),
         })}
     async remove (dto: PictureRemoveApi) {
-        await fetch(`http://localhost:3000/pictures/${dto.id}`, { method: 'DELETE' });
+        await fetch(`${URL}/${dto.id}`,
+            { method: 'DELETE' });
     }
 }
 
