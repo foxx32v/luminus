@@ -1,4 +1,4 @@
-import { useMode, type ButtonModeProps } from "../shared"
+import { useMode, type ButtonModeProps } from "../../shared"
 
 export const ButtonMode = ({title,mode,icon,additionalClick}: ButtonModeProps) => {
     const {currentMode,setMode} = useMode()

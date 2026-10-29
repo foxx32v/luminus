@@ -1,4 +1,4 @@
-import { usePreset, type PresetProps } from '../shared';
+import { usePreset, type PresetProps } from '../../shared';
 import { ButtonSvg } from './buttonSvg';
 import { Loader, Trash2 } from 'lucide-react';
 

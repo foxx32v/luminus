@@ -1,5 +1,5 @@
-import { useButtonColor } from '../shared';
-import { ColorPreset } from './';
+import { useButtonColor } from '../../shared';
+import { ColorPreset } from '.';
 
 export const ButtonColor = () => {
     const { colors, currentColor, isOpen, pos, handleButtonClick, handleDragStart } = useButtonColor();

@@ -1,4 +1,4 @@
-import { type ButtonSvgProps } from "../shared"
+import { type ButtonSvgProps } from "../../shared"
 
 export const ButtonSvg = ({customClassName,title,icon,additionalClick}: ButtonSvgProps) => {
     return (

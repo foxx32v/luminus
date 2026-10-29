@@ -1,9 +1,10 @@
 import { BookLock, BookOpen, Check, Plus } from 'lucide-react';
 import { Preset, Loader, ButtonSvg } from '../A.features';
-import { usePanelPresets } from '../shared';
+import { usePanelPresets, usePresetsBar } from '../../shared';
 
 export const PanelPresets = () => {
-    const { isOpenSideBar, setOpenSideBar, isOpenMenuAdding, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave } = usePanelPresets()
+    const { isOpenSideBar, setOpenSideBar } = usePresetsBar();
+    const { isOpenMenuAdding, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave } = usePanelPresets()
 
     return (
         <div id="panelPresetsBox">

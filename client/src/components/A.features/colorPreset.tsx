@@ -1,4 +1,4 @@
-import { useColor, useColorMenu, useMode, type ColorProps } from '../shared/';
+import { useColor, useColorMenu, useMode, type ColorProps } from '../../shared';
 
 export const ColorPreset = ({color}:ColorProps) => {
     const { setOpen } = useColorMenu()

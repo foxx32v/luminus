@@ -13,6 +13,10 @@ export interface ColorStore {
 export interface MatrixStore {
     matrix: MatrixType
     setMatrix: (newMatrix: number[]) => void
+    index: number;
+    goTo: (step:number) => void
+    history: MatrixType[]
+    pushMatrix: (newMatrix: MatrixType) => void
 }
 
 export interface ColorMenuStore {
@@ -37,4 +41,9 @@ export interface SocketStore {
     setError: (error: unknown | null) => void;
     isConnection: boolean;
     setIsConnection: (connect: boolean) => void;
+}
+
+export interface PresetsBarStore {
+    isOpenSideBar: boolean;
+    setOpenSideBar: (isOpen:boolean) => void;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useColor } from "../shared/"
-import { ButtonSvg, ColorPreset } from "./"
+import { useColor } from "../../shared"
+import { ButtonSvg, ColorPreset } from "."
 import { FolderClosed, FolderOpen } from "lucide-react"
 
 export const RecentColors = () => {

@@ -21,13 +21,12 @@ export function useCanvas() {
         const timeOut = setTimeout(() => {
         emit('matrix:update', { matrix })
         }, 100)
-        console.log(matrix)
         return () => clearTimeout(timeOut);
     }, [matrix, isConnection])
 
     useEffect(() => {
         on('matrix:update', (data:{matrix:MatrixType})=>{
-            if (matrix==data.matrix) return
+            if (matrix == data.matrix) return
             isRemote.current = true
             setMatrix(data.matrix)
         })

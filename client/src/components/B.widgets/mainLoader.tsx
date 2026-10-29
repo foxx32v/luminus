@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 import { ButtonSvg, Loader } from '../A.features';
-import { useSocket, useSocketStore } from '../shared';
+import { useSocket, useSocketStore } from '../../shared';
 import { useState } from 'react';
 
 export const MainLoader = () => {

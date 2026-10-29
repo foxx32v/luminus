@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { LoaderProps, LoaderElementProps } from '../shared';
+import type { LoaderProps, LoaderElementProps } from '../../shared';
 
 const LoaderElement = ({go, size}: LoaderElementProps) => {
     return (

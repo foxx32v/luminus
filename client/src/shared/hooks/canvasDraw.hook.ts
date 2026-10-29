@@ -6,7 +6,7 @@ const GRID = CONSTANTS_CONFIG.GRID;
 
 export function useCanvasDraw(size: number) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const { matrix, setMatrix } = useMatrix();
+    const { matrix, setMatrix, pushMatrix } = useMatrix();
     const { currentColor, setColor } = useColor();
     const isDrawing = useRef(false);
 
@@ -43,7 +43,7 @@ export function useCanvasDraw(size: number) {
         if (matrix[pos.i] === color) return;
         const next = [...matrix];
         next[pos.i] = color;
-        setMatrix(next)
+        pushMatrix(next)
     };
 
     const eyedropperAt = (e: React.MouseEvent) => {
@@ -68,7 +68,7 @@ export function useCanvasDraw(size: number) {
         const newColor = (r << 16) | (g << 8) | b
         const next = [...matrix]
         next[pos.i] = newColor
-        setMatrix(next)
+        pushMatrix(next)
     }
 
     const handlePaintStart = (e: React.MouseEvent, color: number) => {

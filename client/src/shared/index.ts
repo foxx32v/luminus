@@ -15,6 +15,7 @@ export * from './hooks/preset.hook';
 export * from './hooks/panelPresets.hook';
 export * from './hooks/buttonColor.hook';
 export * from './hooks/socket.hook';
+export * from './hooks/hotkeys.hook';
 
 // api //
 export * from './api/tRPC';
@@ -23,6 +24,7 @@ export * from './api/socket';
 
 // config //
 export * from './configs/constants.config';
+export * from './configs/keys.config';
 
 // store //
 export * from './store/mode.store';
@@ -30,4 +32,5 @@ export * from './store/color.store';
 export * from './store/matrix.store'
 export * from './store/colorMenu.store';
 export * from './store/socket.store';
+export * from './store/presetsBar.store';
 

@@ -1,4 +1,4 @@
-import { useCanvas } from '../shared';
+import { useCanvas } from '../../shared';
 
 export const Canvas = () => {
     const { size, offset, canvasRef, getCursor, handleWheel, handleMouseDown, handleMouseMove, handleMouseUp} = useCanvas();
