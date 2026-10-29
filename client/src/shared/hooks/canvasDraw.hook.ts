@@ -6,7 +6,7 @@ const GRID = CONSTANTS_CONFIG.GRID;
 
 export function useCanvasDraw(size: number) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const { matrix, setMatrix, pushMatrix } = useMatrix();
+    const { matrix, pushMatrix } = useMatrix();
     const { currentColor, setColor } = useColor();
     const isDrawing = useRef(false);
 

@@ -4,8 +4,8 @@ const GRID = CONSTANTS_CONFIG.GRID
 
 export function useCanvasActions() {
     const { currentColor } = useColor()
-    const { setMatrix } = useMatrix()
-    const clear = () => setMatrix(Array(GRID*GRID).fill(0xffffff))
-    const fill = () => setMatrix(Array(GRID*GRID).fill(currentColor))
+    const { pushMatrix } = useMatrix()
+    const clear = () => pushMatrix(Array(GRID*GRID).fill(0xffffff))
+    const fill = () => pushMatrix(Array(GRID*GRID).fill(currentColor))
     return { clear, fill }
 }

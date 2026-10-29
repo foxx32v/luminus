@@ -30,5 +30,5 @@ export const useMatrix = create<MatrixStore>((set,get) => ({
         if (newIndex < 0 || newIndex >= history.length) return
         set({index: newIndex, matrix: history[newIndex]})
     },
-    history: []
+    history: [LocalStorageGet('matrix')],
 }))
