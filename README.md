@@ -78,10 +78,11 @@ npm run start
 
 ```mermaid
 flowchart TD
-    Client[React Client] <-->|WebSocket| Server[NestJS Server]
-    Client -->|tRPC / REST| Server
+    Client[React Client] <-->|WebSocket: matrix| Server[NestJS Server]
+    Client -->|tRPC: presets read| Server
+    Client -->|REST: presets write| Server
     Server -->|Prisma| DB[(PostgreSQL)]
-    Server <-->|Pub/Sub| Redis[(Redis)]
+    Server <-->|matrix state| Redis[(Redis)]
     Server -->|Queue| BullMQ[BullMQ]
     Server <-->|WebSocket| ESP32[ESP32]
     ESP32 --> Matrix[LED Matrix 16x16]
