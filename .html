@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Luminus Logo Editor</title>
+    <style>
+        body {
+            background: #1e1e1e;
+            color: #fff;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(32, 20px);
+            grid-template-rows: repeat(6, 20px);
+            gap: 2px;
+            background: #2a2a2a;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            background: #3a3a3a;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.1s;
+        }
+
+        .cell:hover {
+            outline: 1px solid #fff;
+        }
+
+        .cell.blue {
+            background: #4a90e2;
+            box-shadow: 0 0 6px #4a90e2;
+        }
+
+        .cell.white {
+            background: #ffffff;
+            box-shadow: 0 0 6px #ffffff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        #output {
+            width: 100%;
+            max-width: 900px;
+            height: 150px;
+            background: #111;
+            color: #0f0;
+            font-family: monospace;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+            white-space: pre-wrap;
+            font-size: 12px;
+        }
+
+        .hint {
+            color: #888;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Luminus Logo Editor (32×6)</h2>
+    <p class="hint">ЛКМ — синий · ПКМ — белый · повторный клик — выключить</p>
+    <div id="grid"></div>
+    <button onclick="exportHtml()">Экспорт HTML</button>
+    <textarea id="output" readonly></textarea>
+
+    <script>
+        const COLS = 32;
+        const ROWS = 6;
+        const TOTAL = COLS * ROWS;
+        const grid = document.getElementById('grid');
+
+        for (let i = 0; i < TOTAL; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+
+            cell.addEventListener('click', () => {
+                if (cell.classList.contains('white')) {
+                    cell.classList.remove('white');
+                    cell.classList.add('blue');
+                } else if (cell.classList.contains('blue')) {
+                    cell.classList.remove('blue');
+                } else {
+                    cell.classList.add('blue');
+                }
+            });
+
+            cell.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                if (cell.classList.contains('blue')) {
+                    cell.classList.remove('blue');
+                    cell.classList.add('white');
+                } else if (cell.classList.contains('white')) {
+                    cell.classList.remove('white');
+                } else {
+                    cell.classList.add('white');
+                }
+            });
+
+            grid.appendChild(cell);
+        }
+
+        function exportHtml() {
+            const cells = document.querySelectorAll('.cell');
+            const colors = [];
+
+            cells.forEach((cell) => {
+                if (cell.classList.contains('blue')) colors.push('#4a90e2');
+                else if (cell.classList.contains('white')) colors.push('#ffffff');
+                else colors.push('#3a3a3a');
+            });
+
+            let html = '<div style="display: grid; grid-template-columns: repeat(32, 20px); grid-template-rows: repeat(6, 20px); gap: 2px; background: #2a2a2a; padding: 10px; width: fit-content;">\n';
+
+            for (let row = 0; row < ROWS; row++) {
+                for (let col = 0; col < COLS; col++) {
+                    const idx = row * COLS + col;
+                    const color = colors[idx];
+                    const shadow = color === '#3a3a3a' ? '' : ` box-shadow: 0 0 6px ${color};`;
+                    html += `<div style="width: 20px; height: 20px; background: ${color};${shadow}"></div>`;
+                }
+                html += '\n';
+            }
+
+            html += '</div>';
+
+            console.log(html);
+
+            const out = document.getElementById('output');
+            out.style.display = 'block';
+            out.value = html;
+        }
+    </script>
+</body>
+</html>
