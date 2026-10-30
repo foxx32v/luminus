@@ -1,8 +1,9 @@
-import { usePreset, type PresetProps } from '../../shared';
+import { CONSTANTS_CONFIG, usePreset, type PresetProps } from '../../shared';
 import { ButtonSvg } from './buttonSvg';
 import { Loader, Trash2 } from 'lucide-react';
 
 const PREVIEW = 64;
+const ICON_SIZE = CONSTANTS_CONFIG.ICON_SIZE
 
 export const Preset = (props: PresetProps) => {
     const { canvasRef, removePreset, loadPreset, isOpenMenu, posMenu,   handleClick, handleLeave } = usePreset(props);
@@ -16,8 +17,8 @@ export const Preset = (props: PresetProps) => {
                 onMouseLeave={handleLeave}
                 style={{ left: posMenu.x-35, top: posMenu.y-20 }}
                 >
-                <ButtonSvg icon={<Loader size={20}/>} title='загрузить' additionalClick={loadPreset}/>
-                <ButtonSvg icon={<Trash2 size={20} />} title="удалить" additionalClick={removePreset} />
+                <ButtonSvg icon={<Loader size={ICON_SIZE}/>} title='загрузить' additionalClick={loadPreset}/>
+                <ButtonSvg icon={<Trash2 size={ICON_SIZE} />} title="удалить" additionalClick={removePreset} />
             </div>
             <canvas
                 ref={canvasRef}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useColor, useColorMenu } from '../';
+import { colorPack, useColor, useColorMenu } from '../';
 
 export function useButtonColor() {
     const [ colors, setColors] = useState<number[]>([]);
@@ -10,11 +10,11 @@ export function useButtonColor() {
 
     useEffect(() => {
         const result: Set<number> = new Set();
-        for (let w = 0; w < 256; w += 51) result.add((w << 16) | (w << 8) | w);
+        for (let w = 0; w < 256; w += 51) result.add(colorPack(w,w,w))
         for (let r = 6; r <= 256; r += 51)
             for (let g = 6; g <= 256; g += 51)
                 for (let b = 6; b <= 256; b += 51)
-                    result.add((r << 16) | (g << 8) | b);
+                    result.add(colorPack(r,g,b));
         setColors(Array.from(result).slice(1));
     }, [])
 

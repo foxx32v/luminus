@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { useCanvasPresets, useMatrix, type PresetProps } from '..';
+import { colorHex, CONSTANTS_CONFIG, useCanvasPresets, useMatrix, useMatrixSocket, type PresetProps } from '..';
+
+const STEP_ANIMATION = CONSTANTS_CONFIG.STEP_ANIMATION
 
 export function usePreset({ id, content }: PresetProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { remove } = useCanvasPresets();
-    const { setMatrix } = useMatrix();
+    const { matrix } = useMatrix();
+    const { animate } = useMatrixSocket()
     const [isOpenMenu, setOpenMenu] = useState(false);
     const [posMenu, setPosMenu] = useState<{ x: number; y: number }>({ x: -100, y: 300 });
 
@@ -15,7 +18,7 @@ export function usePreset({ id, content }: PresetProps) {
     };
 
     const loadPreset = () => {
-        setMatrix(content);
+        animate(matrix, content, STEP_ANIMATION)
     };
 
     const handleClick = (e: React.MouseEvent) => {
@@ -37,7 +40,7 @@ export function usePreset({ id, content }: PresetProps) {
         content.forEach((color, i) => {
             const col = i % 16;
             const row = Math.floor(i / 16);
-            ctx.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
+            ctx.fillStyle = colorHex(color);
             ctx.fillRect(col * cell, row * cell, cell, cell);
         });
     }, [content]);

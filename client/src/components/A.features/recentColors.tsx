@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import { useColor } from "../../shared"
+import { CONSTANTS_CONFIG, useColor } from "../../shared"
 import { ButtonSvg, ColorPreset } from "."
 import { FolderClosed, FolderOpen } from "lucide-react"
+
+const ICON_SIZE = CONSTANTS_CONFIG.ICON_SIZE
 
 export const RecentColors = () => {
     const [open, setOpen] = useState(false)
@@ -18,7 +20,7 @@ export const RecentColors = () => {
     return (
         <div id="recentColorsBox"
         >
-        <ButtonSvg icon={open?<FolderOpen size={20}/>:<FolderClosed size={20}/>} title={open?'Закрыть':'Открыть'} additionalClick={handleClick} />
+        <ButtonSvg icon={open?<FolderOpen size={ICON_SIZE}/>:<FolderClosed size={ICON_SIZE}/>} title={open?'Закрыть':'Открыть'} additionalClick={handleClick} />
         <div
         className={`recentColorsMenu${open?'Open':''}`}
         >

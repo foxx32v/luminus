@@ -1,4 +1,4 @@
-import { useButtonColor } from '../../shared';
+import { colorHex, useButtonColor } from '../../shared';
 import { ColorPreset } from '.';
 
 export const ButtonColor = () => {
@@ -17,7 +17,7 @@ export const ButtonColor = () => {
             <button className="buttonMode" onClick={handleButtonClick}>
                 <div
                     className="svgBox"
-                    style={{ background: `#${currentColor.toString(16).padStart(6, '0')}` }}
+                    style={{ background: colorHex(currentColor) }}
                 />
                 <p className="buttonModeText">Цвет</p>
             </button>

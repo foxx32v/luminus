@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useColor, useMatrix } from '../';
+import { colorHex, colorPack, updateColors, useColor, useMatrix, useMatrixSocket } from '../';
 import { CONSTANTS_CONFIG } from '../configs/constants.config';
 
 const GRID = CONSTANTS_CONFIG.GRID;
@@ -20,7 +20,7 @@ export function useCanvasDraw(size: number) {
         matrix.forEach((c, i) => {
             const col = i % GRID;
             const row = Math.floor(i / GRID);
-            ctx.fillStyle = `#${c.toString(16).padStart(6, '0')}`;
+            ctx.fillStyle = colorHex(c);
             ctx.fillRect(col * cell, row * cell, cell, cell);
         });
     }, [matrix, size]);
@@ -55,21 +55,11 @@ export function useCanvasDraw(size: number) {
     const toShaderAt = (e: React.MouseEvent, step: number) => {
         const pos = start(e);
         if (!pos) return;
-        const oldColor = matrix[pos.i]
-        let r = ((oldColor >> 16) & 0xff) + step
-        let g = ((oldColor >> 8) & 0xff) + step
-        let b = (oldColor & 0xff) + step
-        if (r > 255) r = 255;
-        if (r < 0) r = 0;
-        if (g > 255) g = 255;
-        if (g < 0) g = 0;
-        if (b > 255) b = 255;
-        if (b < 0) b = 0;
-        const newColor = (r << 16) | (g << 8) | b
-        const next = [...matrix]
-        next[pos.i] = newColor
-        pushMatrix(next)
-    }
+        const newColor = updateColors(step, matrix[pos.i]);
+        const next = [...matrix];
+        next[pos.i] = newColor;
+        pushMatrix(next);
+    };
 
     const handlePaintStart = (e: React.MouseEvent, color: number) => {
         isDrawing.current = true;

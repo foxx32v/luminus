@@ -2,6 +2,7 @@
   "name": "luminus",
   "private": true,
   "scripts": {
+    "test": "npm --prefix client test && npm --prefix server test",
     "infra": "docker compose -f server/docker-compose.yaml up -d",
     "infra:down": "docker compose -f server/docker-compose.yaml down",
     "seed": "cd server && npx prisma db seed",

@@ -17,6 +17,7 @@ export * from './hooks/buttonColor.hook';
 export * from './hooks/socket.hook';
 export * from './hooks/hotkeys.hook';
 export * from './hooks/theme.hook';
+export * from './hooks/matrixSocket.hook';
 
 // api //
 export * from './api/tRPC';
@@ -35,4 +36,7 @@ export * from './store/colorMenu.store';
 export * from './store/socket.store';
 export * from './store/presetsBar.store';
 export * from './store/theme.store';
+
+// Utils //
+export * from './utils/matrix';
 

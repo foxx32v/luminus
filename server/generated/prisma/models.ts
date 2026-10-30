@@ -8,5 +8,5 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Picture.js'
-export type * from './commonInputTypes.js'
+export type * from './models/Picture'
+export type * from './commonInputTypes'

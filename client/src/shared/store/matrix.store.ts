@@ -29,6 +29,7 @@ export const useMatrix = create<MatrixStore>((set,get) => ({
         const newIndex = index + step
         if (newIndex < 0 || newIndex >= history.length) return
         set({index: newIndex, matrix: history[newIndex]})
+        LocalStorageSave('matrix', history[newIndex]);
     },
     history: [LocalStorageGet('matrix')],
 }))

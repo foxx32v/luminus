@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "test": "jest",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
@@ -25,13 +26,16 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "gh-pages": "^6.3.0",
+    "jest": "^30.5.2",
     "oxlint": "^1.81.0",
     "sass": "^1.105.2",
+    "ts-jest": "^29.4.15",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }

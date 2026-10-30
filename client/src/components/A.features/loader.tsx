@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import type { LoaderProps, LoaderElementProps } from '../../shared';
+import { type LoaderProps, type LoaderElementProps, CONSTANTS_CONFIG } from '../../shared';
+
+const ICON_SIZE = CONSTANTS_CONFIG.ICON_SIZE
 
 const LoaderElement = ({go, size}: LoaderElementProps) => {
     return (
@@ -11,7 +13,7 @@ const LoaderElement = ({go, size}: LoaderElementProps) => {
 
 const ROWS = Array.from({length: 9}, (_,i)=>i+1);
 
-export const Loader = ({isLoad,size=40}: LoaderProps) => {
+export const Loader = ({isLoad,size=ICON_SIZE}: LoaderProps) => {
     const [index, setIndex] = useState(0)
     useEffect(() => {
         if (!isLoad) return
