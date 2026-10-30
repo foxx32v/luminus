@@ -1,5 +1,5 @@
 import { Brush, Move, PaintBucket, Trash2, Pipette, Eraser, Sun, Moon, ArrowLeft, ArrowRight } from 'lucide-react';
-import { ButtonMode, ButtonSvg, ButtonColor, RecentColors } from '../A.features';
+import { ButtonMode, ButtonSvg, ButtonColor, RecentColors, ButtonTheme } from '../A.features';
 import { useCanvas, useMatrix } from '../../shared';
 
 export const Toolbar = () => {
@@ -21,6 +21,7 @@ export const Toolbar = () => {
                 <ButtonSvg icon={<ArrowRight size={iconSize} />} title="Вперёд" additionalClick={()=>goTo(1)} />
                 <ButtonSvg icon={<PaintBucket size={iconSize} />} title="Залить" additionalClick={fill} />
                 <ButtonSvg icon={<Trash2 size={iconSize} />} title="Очистить" additionalClick={clear} />
+                <ButtonTheme/>
             </div>
         </div>
     );

@@ -5,3 +5,4 @@ export { ButtonColor } from './buttonColor';
 export { ColorPreset } from './colorPreset';
 export { Loader } from './loader';
 export { RecentColors } from './recentColors';
+export { ButtonTheme } from './buttonTheme';

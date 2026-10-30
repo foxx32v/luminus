@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: luminus
       POSTGRES_PASSWORD: luminus
-      POSTGRESc_DB: luminus
+      POSTGRES_DB: luminus
     ports:
       - "5430:5432"
     volumes:

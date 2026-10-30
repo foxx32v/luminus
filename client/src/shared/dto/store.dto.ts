@@ -1,5 +1,5 @@
 import type { SocketHookStatusType } from "./socket.dto";
-import type { modesType, MatrixType } from "./type.dto";
+import type { modesType, MatrixType, ThemeType } from "./type.dto";
 export interface ModeState {
     currentMode: modesType;
     setMode: (mode: modesType) => void;
@@ -46,4 +46,8 @@ export interface SocketStore {
 export interface PresetsBarStore {
     isOpenSideBar: boolean;
     setOpenSideBar: (isOpen:boolean) => void;
+}
+export interface ThemeStore {
+    currentTheme: ThemeType;
+    setTheme: (theme: ThemeType) => void;
 }

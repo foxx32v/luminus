@@ -12,6 +12,7 @@
     min-height: 64px;
     cursor: pointer;
     scale: 0.9;
+    color: var(--text-main);
     transition: all 0.15s ease, border-color 0.15s ease;
 }
 
@@ -49,10 +50,10 @@
 }
 
 #colorMenu {
-    position: fixed;
+    position: absolute;
     top: 60px;
     left: 16px;
-    max-width: 8*25px;
+    max-width: 194px;
     max-height: 400px;
     padding: 8px;
     background: var(--bg-panel);
@@ -69,12 +70,15 @@
     gap: 6px;
     overflow-y: scroll;
     scrollbar-width: none;
+    box-shadow: var(--shadow-canvas);
 }
 
 #colorMenu.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    z-index: 500;
+    box-shadow: var(--shadow-canvas);
 }
 
 .colorPreset {

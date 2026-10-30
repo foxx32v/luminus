@@ -10,3 +10,7 @@ export type modesType =
     | null
 
 export type MatrixType = number[]
+
+export type ThemeType =
+    | 'light'
+    | 'dark'

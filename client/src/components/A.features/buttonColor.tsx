@@ -9,7 +9,7 @@ export const ButtonColor = () => {
             <div
                 id="colorMenu"
                 className={isOpen ? 'open' : ''}
-                style={{ left: pos.x, top: pos.y + 30 }}
+                style={{ left: pos.x-180, top: pos.y + 30 }}
                 onMouseDown={handleDragStart}
             >
                 {colors.map((c, i) => <ColorPreset key={i} color={c} />)}

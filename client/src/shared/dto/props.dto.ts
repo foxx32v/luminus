@@ -9,7 +9,7 @@ export interface ButtonModeProps {
 }
 
 export interface ButtonSvgProps extends Omit<ButtonModeProps, 'mode'> {
-    additionalClick: (e?: any) => void
+    additionalClick?: (e?: any) => void
     mode?: never;
     customClassName?: string;
 }

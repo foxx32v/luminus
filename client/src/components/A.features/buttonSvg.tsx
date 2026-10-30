@@ -1,6 +1,6 @@
 import { type ButtonSvgProps } from "../../shared"
 
-export const ButtonSvg = ({customClassName,title,icon,additionalClick}: ButtonSvgProps) => {
+export const ButtonSvg = ({customClassName,title,icon,additionalClick=()=>{}}: ButtonSvgProps) => {
     return (
         <button
         onClick={additionalClick}
