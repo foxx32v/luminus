@@ -136,30 +136,26 @@
     box-shadow: 0 0 15px 1px var(--accent);
 }
 
-.presetBox {
-    position: relative;
-}
-
 .presetOptionBox {
-    position: absolute;
+    position: fixed;
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     opacity: 0;
     z-index: -200;
     padding: 10px;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease;
     visibility: hidden;
 }
 
 .presetOptionBoxOpen {
-    position: absolute;
+    position: fixed;
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     opacity: 1;
     z-index: 400;
     padding: 10px;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease;
     visibility: visible;
 }
