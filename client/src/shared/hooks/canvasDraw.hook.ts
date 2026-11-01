@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { colorHex, colorPack, updateColors, useColor, useMatrix, useMatrixSocket } from '../';
+import { colorHex, updateColors, useColor, useMatrix } from '../';
 import { CONSTANTS_CONFIG } from '../configs/constants.config';
 
 const GRID = CONSTANTS_CONFIG.GRID;

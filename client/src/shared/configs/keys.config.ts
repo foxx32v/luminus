@@ -18,4 +18,8 @@ export const KEYS_CONFIG = {
         OPEN: null,
         CLOSE: 'Escape',
     },
+    GO_TO: {
+        UNDO: 'KeyZ',
+        REDO: 'KeyY',
+    }
 } as const;

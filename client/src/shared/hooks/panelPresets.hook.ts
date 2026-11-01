@@ -4,7 +4,7 @@ import { useCanvasPresets, useMatrix } from '../';
 export function usePanelPresets() {
     const { matrix } = useMatrix()
     const [ isOpenMenuAdding, setOpenMenuAdding] = useState(false)
-    const { isLoading, data, save } = useCanvasPresets()
+    const { isLoading, error, data, save } = useCanvasPresets()
     const titleRef = useRef<HTMLInputElement>(null);
     const [posMenu, setPosMenu] = useState({ x: 300, y: 300 });
 
@@ -24,5 +24,5 @@ export function usePanelPresets() {
         setOpenMenuAdding(false)
         if (titleRef.current) titleRef.current.value = '';
     }
-    return { isOpenMenuAdding, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave,}
+    return { isOpenMenuAdding, error, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave,}
 }

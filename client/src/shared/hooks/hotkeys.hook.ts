@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useMode, useColorMenu, useSocketStore, usePresetsBar, KEYS_CONFIG } from '../';
+import { useMode, useColorMenu, useSocketStore, usePresetsBar, KEYS_CONFIG, useMatrix } from '../';
 
 export function useHotkeys() {
+    const { goTo } = useMatrix()
     const { setMode } = useMode();
     const { isOpen, setOpen } = useColorMenu();
     const { isConnection, setIsConnection } = useSocketStore();
@@ -18,6 +19,8 @@ export function useHotkeys() {
             case KEYS_CONFIG.MODES.TO_LIGHTEN: setMode('toLighten'); break;
             case KEYS_CONFIG.MODES.TO_DARKEN: setMode('toDarken'); break;
             }
+            if (e.ctrlKey && e.code == KEYS_CONFIG.GO_TO.UNDO) {goTo(-1)};
+            if (e.ctrlKey && e.code == KEYS_CONFIG.GO_TO.REDO) {goTo(1)};
             if (e.code == KEYS_CONFIG.COLOR_MENU.CLOSE && isOpen) setOpen(false);
             else if (e.code == KEYS_CONFIG.PRESETS_BAR.CLOSE && isOpenSideBar) setOpenSideBar(false);
             // else if (e.code == KEYS_CONFIG.SOCKET.SET_IS_CONNECTION && isConnection) setIsConnection(false);

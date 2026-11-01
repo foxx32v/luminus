@@ -1,26 +1,31 @@
-import { useEffect, useRef } from "react";
-import { useMatrix, useSocket, type MatrixType } from "../";
+import { useEffect } from "react";
+import { CONSTANTS_CONFIG, useMatrix, useSocket, type MatrixType } from "../";
+
+const SOCKET_TIMEOUT = CONSTANTS_CONFIG.SOCKET_TIMEOUT
 
 export function useMatrixSocket() {
-    const { matrix, setMatrix } = useMatrix();
+    const { matrix, isRemote, setRemote, setMatrix } = useMatrix();
     const { isConnection, off, emit, on } = useSocket();
-    const isRemote = useRef(false);
+
     useEffect(() => {
-    if (!isConnection || isRemote.current) {isRemote.current = false; return}
+    if (!isConnection || isRemote) {
+        isRemote&&setRemote(false)
+        return
+    }
         const timeOut = setTimeout(() => {
         emit('matrix:update', { matrix })
-        }, 100)
+        }, SOCKET_TIMEOUT)
         return () => clearTimeout(timeOut);
     }, [matrix, isConnection])
 
     useEffect(() => {
         on('matrix:update', (data:{matrix:MatrixType})=>{
             if (JSON.stringify(matrix) == JSON.stringify(data.matrix)) return
-            isRemote.current = true
+            setRemote(true)
             setMatrix(data.matrix)
         })
         return (() => off('matrix:update'))
-    },[])
+    },[matrix, isConnection, isRemote])
 
     const animate = (from: MatrixType, to: MatrixType, step:number) => {
         emit('preset:animate', { from, to, step });

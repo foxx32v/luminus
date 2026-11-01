@@ -12,11 +12,15 @@ const LocalStorageGet = (key: string) => {
     } catch {return Array(SIZE).fill(0xffffff)}
 }
 
-export const useMatrix = create<MatrixStore>((set,get) => ({
-    matrix: LocalStorageGet('matrix'),
+const initMatrix = LocalStorageGet('matrix')
+
+export const useMatrix = create<MatrixStore>((set,get) => (
+    {
+    matrix: initMatrix,
+    isRemote: false,
+    setRemote: (isRemote) => set({isRemote:isRemote}),
     setMatrix: (newMatrix) => {
         set({ matrix: newMatrix });
-        LocalStorageSave('matrix', newMatrix);
     },
     pushMatrix: (newMatrix) => {
         const history = [...get().history, newMatrix];
@@ -31,5 +35,5 @@ export const useMatrix = create<MatrixStore>((set,get) => ({
         set({index: newIndex, matrix: history[newIndex]})
         LocalStorageSave('matrix', history[newIndex]);
     },
-    history: [LocalStorageGet('matrix')],
-}))
+    history: [LocalStorageGet('matrix')],}
+))

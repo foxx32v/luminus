@@ -9,7 +9,7 @@ export function usePreset({ id, content }: PresetProps) {
     const { matrix } = useMatrix();
     const { animate } = useMatrixSocket()
     const [isOpenMenu, setOpenMenu] = useState(false);
-    const [posMenu, setPosMenu] = useState<{ x: number; y: number }>({ x: -100, y: 300 });
+    const [posMenu, setPosMenu] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
     const removePreset = async (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -23,8 +23,8 @@ export function usePreset({ id, content }: PresetProps) {
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        setOpenMenu(!isOpenMenu);
         setPosMenu({ x: e.clientX, y: e.clientY });
+        setOpenMenu(!isOpenMenu)
     };
 
     const handleLeave = (e: React.MouseEvent) => {

@@ -11,11 +11,11 @@ export const Preset = (props: PresetProps) => {
     return (
         <div className="presetBox"
         onClick={handleClick}
+        onMouseLeave={handleLeave}
         >
             <div
-                className={`presetOptionBox${isOpenMenu ? 'Open' : ''}`}
                 onMouseLeave={handleLeave}
-                style={{ left: posMenu.x-35, top: posMenu.y-20 }}
+                className={`presetOptionBox${isOpenMenu ? 'Open' : ''}`}
                 >
                 <ButtonSvg icon={<Loader size={ICON_SIZE}/>} title='загрузить' additionalClick={loadPreset}/>
                 <ButtonSvg icon={<Trash2 size={ICON_SIZE} />} title="удалить" additionalClick={removePreset} />

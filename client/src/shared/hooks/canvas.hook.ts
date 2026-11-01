@@ -1,7 +1,9 @@
 import { useCanvasPan } from './canvasPan.hook';
 import { useCanvasDraw } from './canvasDraw.hook';
 import { useCanvasActions } from './canvasActions';
-import { useMode, useMatrixSocket } from '../';
+import { useMode, useMatrixSocket, CONSTANTS_CONFIG } from '../';
+
+const STEP_SHADER = CONSTANTS_CONFIG.STEP_SHADER
 
 export function useCanvas() {
     const matrixSocket = useMatrixSocket()
@@ -26,8 +28,8 @@ export function useCanvas() {
             case 'drag': pan.handlePanStart(e); break;
             case 'draw': draw.handlePaintStart(e, draw.currentColor); break;
             case 'eraser': draw.handlePaintStart(e, 0xffffff); break;
-            case 'toLighten': draw.toShaderAt(e, 20);break;
-            case 'toDarken': draw.toShaderAt(e, -20);break;
+            case 'toLighten': draw.toShaderAt(e, STEP_SHADER);break;
+            case 'toDarken': draw.toShaderAt(e, -STEP_SHADER);break;
             case 'eyedropper': draw.eyedropperAt(e); break;
         }
     };

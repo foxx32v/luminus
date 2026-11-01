@@ -6,7 +6,7 @@ const ICON_SIZE = CONSTANTS_CONFIG.ICON_SIZE
 
 export const PanelPresets = () => {
     const { isOpenSideBar, setOpenSideBar } = usePresetsBar();
-    const { isOpenMenuAdding, posMenu, titleRef, isLoading, data, openAddingMenu, savePreset, menuLeave } = usePanelPresets()
+    const { error, isLoading, titleRef, menuLeave, savePreset, isOpenMenuAdding, posMenu, data, openAddingMenu } = usePanelPresets()
 
     return (
         <div id="panelPresetsBox">
@@ -32,6 +32,7 @@ export const PanelPresets = () => {
                 {isLoading ? <Loader size={ICON_SIZE*2} isLoad />
                 : data?.map((p) => <Preset key={p.id} id={p.id} title={p.title ?? ''} content={p.content} />
                 )}
+                {error && <p className='errorText'>{error.message}</p>}
             </aside>
         </div>
     );

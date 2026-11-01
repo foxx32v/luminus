@@ -17,6 +17,8 @@ export interface MatrixStore {
     goTo: (step:number) => void
     history: MatrixType[]
     pushMatrix: (newMatrix: MatrixType) => void
+    isRemote: boolean
+    setRemote: (isRemote: boolean) => void;
 }
 
 export interface ColorMenuStore {

@@ -13,7 +13,7 @@ export class MatrixWorker extends WorkerHost {
         for(let i=1;i<=step;i++) {
             const frame = this.interpolate(from, to, i / step)
             this.gateway.handleMatrixUpdate({matrix:frame})
-            await new Promise((r) => setTimeout(r,10))
+            await new Promise((r) => setTimeout(r,5))
         }
     }
 

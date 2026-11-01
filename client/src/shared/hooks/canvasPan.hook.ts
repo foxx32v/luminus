@@ -1,12 +1,15 @@
 import { useRef, useState } from 'react';
+import { CONSTANTS_CONFIG } from '../configs/constants.config';
+
+const SIZE = CONSTANTS_CONFIG.SIZE_CANVAS
+const step = CONSTANTS_CONFIG.STEP_SIZE
 
 export function useCanvasPan() {
-    const [size, setSize] = useState(512);
+    const [size, setSize] = useState<number>(SIZE);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const dragRef = useRef<{ x: number; y: number } | null>(null);
 
     const handleWheel = (e: React.WheelEvent) => {
-        const step = 64;
         const next = size + (e.deltaY < 0 ? step : -step);
         setSize(Math.min(2048, Math.max(128, next)));
     }

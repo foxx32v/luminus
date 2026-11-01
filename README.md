@@ -1,4 +1,4 @@
-<img src="./assets/logo.svg" alt="Luminus" width="600" />
+<img src="./assets/logo.png" alt="Luminus" width="600" />
 
 <h2 >Веб-приложение для рисования на матрице через ESP32.</h2>
 
