@@ -4,6 +4,7 @@ node_modules/
 .pnp.js
 
 # env
+secrets.h
 .env
 .env.local
 .env.*.local
@@ -35,3 +36,6 @@ Thumbs.db
 
 # docker
 docker-data/settings
+
+# pio
+*.pio
