@@ -1,7 +1,7 @@
 import { useCanvas } from '../../shared';
 
 export const Canvas = () => {
-    const { size, offset, canvasRef, getCursor, handleWheel, handleMouseDown, handleMouseMove, handleMouseUp} = useCanvas();
+    const { size, offset, canvasRef, handleDropOver, handleDrop, getCursor, handleWheel, handleMouseDown, handleMouseMove, handleMouseUp} = useCanvas();
     return (
         <div id="canvasBox">
             <canvas
@@ -20,6 +20,8 @@ export const Canvas = () => {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
+                onDrop={handleDrop}
+                onDragOver={handleDropOver}
                 onContextMenu={(e) => e.preventDefault()}
             />
         </div>

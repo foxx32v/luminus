@@ -89,6 +89,7 @@
     border-left: 1px solid var(--border-color);
     box-shadow: var(--shadow-panel);
     overflow-y: auto;
+    scrollbar-width: none;
     transition: right 0.2s ease;
     &.barOpen {
         right: 0px;
@@ -110,6 +111,11 @@
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
+}
+
+#presetsBoxContent {
+    margin-top: 50px;
+    height: 100%;
 }
 
 .presetBox:hover {
@@ -182,9 +188,6 @@
         width: 20px;
         height: 20px;
     }
-}
-
-#recentColorsBox {
 }
 
 .recentColorsMenu {

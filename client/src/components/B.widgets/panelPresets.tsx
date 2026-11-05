@@ -29,10 +29,11 @@ export const PanelPresets = () => {
                 <div className="header">
                     <ButtonSvg title="добавить" icon={<Plus size={ICON_SIZE} />} additionalClick={openAddingMenu} />
                 </div>
+                <div id='presetsBoxContent'>
                 {isLoading ? <Loader size={ICON_SIZE*2} isLoad />
-                : data?.map((p) => <Preset key={p.id} id={p.id} title={p.title ?? ''} content={p.content} />
-                )}
+                : data?.map((p) => <Preset key={p.id} id={p.id} title={p.title ?? ''} content={p.content} />)}
                 {error && <p className='errorText'>{error.message}</p>}
+                </div>
             </aside>
         </div>
     );

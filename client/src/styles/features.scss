@@ -119,6 +119,10 @@
 .header {
     display: flex;
     justify-content: left;
+    position: fixed;
+    background: var(--bg-card);
+    width: 100%;
+    z-index: 400;
 }
 
 .loaderElement {
