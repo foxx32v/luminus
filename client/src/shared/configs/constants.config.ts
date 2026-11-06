@@ -7,6 +7,6 @@ export const CONSTANTS_CONFIG = {
     SERVER_URL_TRPC: 'http://localhost:3000/trpc',
     SERVER_URL_PICTURES: 'http://localhost:3000/pictures',
     ICON_SIZE: 16,
-    STEP_ANIMATION: 20,
+    STEP_ANIMATION: 25,
     STEP_SHADER: 10,
 } as const;
