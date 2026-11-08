@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { CONSTANTS_CONFIG, type MatrixStore } from "../";
-const SIZE = CONSTANTS_CONFIG.SIZE
+const SIZE = CONSTANTS_CONFIG.SIZE_CANVAS
 
 const LocalStorageSave = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value))

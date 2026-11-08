@@ -5,6 +5,7 @@ node_modules/
 
 # env
 secrets.h
+.env.deploy
 .env
 .env.local
 .env.*.local
